@@ -1,0 +1,195 @@
+
+==========================================================
+
+Linear Regression is a statistical approach to model the relationship between a dependent variable and one or more independent variables. The goal is to find the line of best fit that can accurately predict the dependent variable based on the independent variables.
+
+Here's a simple example:
+
+Imagine we have data on the number of hours studied and the corresponding test scores of a group of students. We can use linear regression to model the relationship between the number of hours studied and test scores. The line of best fit can then be used to predict a student's test score based on the number of hours they studied.
+
+A common use case of linear regression is to predict numerical values, such as sales or stock prices. For example, a company might use historical data on marketing expenses and sales to predict future sales based on the marketing budget.
+
+It's important to note that linear regression assumes a linear relationship between the independent and dependent variables, so it may not be suitable for all types of data. Additionally, the model can be affected by outliers and non-linear relationships, which may need to be addressed before building the model.
+
+Terminology:	R-squared and mean squared error metrics (evaluates the performance of the model)., out liers, missing values
+Linear Regression models are sensitive to the presence of outliers, as they can greatly affect the fit of the model. Outliers can arise due to various reasons such as measurement errors, errors in data collection, or due to the presence of extreme values in the data. Here are some scenarios where outliers can impact Linear Regression models:
+
+				High Leverage Points: Outliers with high leverage can have a disproportionate impact on the fitted regression line, leading to a biased model.
+
+Influential Points: Outliers that are influential can greatly affect the slope and intercept of the regression line, leading to a misfit of the model.
+
+Masking Relationships: Outliers can mask underlying relationships between variables, making it difficult to identify the correct relationships in the data.
+
+Reduced Model Accuracy: Outliers can reduce the accuracy of the regression model, leading to incorrect predictions for new data points.
+
+To address outliers in Linear Regression models, some common approaches include removing them from the data, transforming the data, or using robust regression techniques that are less sensitive to outliers. However, it's important to understand the root cause of the outliers and to carefully consider the consequences of removing or transforming them before taking any action.
+
+
+Here is an example of linear regression using the scikit-learn library in Python:
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Generate random data for the x and y values
+np.random.seed(0)
+x = np.random.rand(100, 1)
+y = 2 + 3 * x + np.random.rand(100, 1)
+
+# Fit the linear regression model to the data
+reg = LinearRegression().fit(x, y)
+
+# Make predictions using the model
+y_pred = reg.predict(x)
+
+# Plot the data and the line of best fit
+plt.scatter(x, y, color='blue')
+plt.plot(x, y_pred, color='red')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+
+
+This example generates random data for the independent variable x and the dependent variable y, fits the linear regression model to the data, makes predictions using the model, and plots the data and the line of best fit.
+
+It is also possible to evaluate the performance of the model using metrics such as mean squared error, R-squared, or adjusted R-squared. These metrics can provide information on the goodness of fit of the model and the magnitude of the residuals.
+
+
+
+Here is an example of using linear regression to make real estate predictions:
+
+python
+Copy code
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Load the real estate data into a pandas DataFrame
+df = pd.read_csv('real_estate.csv')
+
+# Select the features to be used in the model
+features = ['square_feet', 'bedrooms', 'bathrooms']
+X = df[features]
+y = df['price']
+
+# Fit the linear regression model to the data
+reg = LinearRegression().fit(X, y)
+
+# Make predictions using the model
+y_pred = reg.predict(X)
+
+# Evaluate the performance of the model
+r2 = reg.score(X, y)
+mse = np.mean((y_pred - y) ** 2)
+
+print('R-squared:', r2)
+print('Mean Squared Error:', mse)
+This example loads real estate data into a pandas DataFrame, selects the features to be used in the model (square footage, number of bedrooms, and number of bathrooms), fits the linear regression model to the data, makes predictions using the model, and evaluates the performance of the model using the R-squared and mean squared error metrics.
+
+It is important to keep in mind that this is a simplified example and in practice, the real estate data may contain missing values, outliers, or other issues that would need to be addressed before building the model. Additionally, the choice of features to include in the model and the evaluation metrics used may vary depending on the specific use case.
+
+
+
+Here is an example of using linear regression to calculate the debt service coverage ratio (DSCR):
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Load the financial data into a pandas DataFrame
+df = pd.read_csv('financial_data.csv')
+
+# Select the features to be used in the model
+features = ['income', 'debt']
+X = df[features]
+y = df['debt_service']
+
+# Fit the linear regression model to the data
+reg = LinearRegression().fit(X, y)
+
+# Make predictions using the model
+y_pred = reg.predict(X)
+
+# Evaluate the performance of the model
+r2 = reg.score(X, y)
+mse = np.mean((y_pred - y) ** 2)
+
+print('R-squared:', r2)
+print('Mean Squared Error:', mse)
+
+# Calculate the DSCR
+dscr = df['income'] / df['debt_service']
+
+# Print the average DSCR
+print('Average DSCR:', np.mean(dscr))
+
+This example loads financial data into a pandas DataFrame, selects the features to be used in the model (income and debt), fits the linear regression model to the data, makes predictions using the model, and evaluates the performance of the model using the R-squared and mean squared error metrics. It then calculates the DSCR as the ratio of income to debt service and prints the average DSCR.
+
+It is important to keep in mind that this is a simplified example and in practice, the financial data may contain missing values, outliers, or other issues that would need to be addressed before building the model. Additionally, the choice of features to include in the model and the evaluation metrics used may vary depending on the specific use case.
+==========================================================
+
+https://s3.amazonaws.com/assets.datacamp.com/email/other/ML+Cheat+Sheet_2.pdf
+
+https://datagy.io/python-sklearn-linear-regression/
+
+
+https://scikit-learn.org/stable/modules/linear_model.html
+
+
+***************************************************		Evaluation
+
+
+Sure, here is a simple example of how to evaluate a Linear Regression model using Python and the `sklearn` library:
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn import metrics
+import numpy as np
+
+# Let's create some simple data
+np.random.seed(0)
+X = np.random.rand(100, 1)
+y = 2 + 3 * X + np.random.rand(100, 1)
+
+# Split the data into training/testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create linear regression object
+regr = LinearRegression()
+
+# Train the model using the training sets
+regr.fit(X_train, y_train)
+
+# Make predictions using the testing set
+y_pred = regr.predict(X_test)
+
+# The coefficients
+print('Coefficients: \n', regr.coef_)
+# The mean squared error
+print('Mean squared error: %.2f'
+      % metrics.mean_squared_error(y_test, y_pred))
+# The coefficient of determination: 1 is perfect prediction
+print('Coefficient of determination: %.2f'
+      % metrics.r2_score(y_test, y_pred))
+```
+
+In this example, we first create a simple dataset with a linear relationship between X and y. We then split this dataset into a training set and a test set¹.
+
+We create a `LinearRegression` object and fit this model to our training data¹. We then use our trained model to predict the values of y for our test set¹.
+
+Finally, we evaluate our model by calculating the mean squared error and the R^2 score¹. The mean squared error tells us how close our predicted values are to the actual values¹. The R^2 score (the coefficient of determination) tells us how well our model fits the data¹. An R^2 score of 1 indicates a perfect fit¹.
+
+This is a basic example. Depending on your specific use case and dataset, you might need to preprocess your data differently or tune your model's parameters¹.
+
+Source: Conversation with Bing, 12/21/2023
+(1) Evaluating a Linear Regression Model | ritchieng.github.io. https://www.ritchieng.com/machine-learning-evaluate-linear-regression-model/.
+(2) Simple Linear Regression | An Easy Introduction & Examples - Scribbr. https://www.scribbr.com/statistics/simple-linear-regression/.
+(3) 4 Examples of Using Linear Regression in Real Life - Statology. https://www.statology.org/linear-regression-real-life-examples/.
+(4) Linear Regression in R | A Step-by-Step Guide & Examples - Scribbr. https://www.scribbr.com/statistics/linear-regression-in-r/.
+(5) undefined. http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv.
+(6) github.com. https://github.com/NatZaman/NZ_public/tree/67573e57dc35d3151a3156c4c6fde7531d26d577/ML%2Fweek_01%2Fskboston.py.
+(7) github.com. https://github.com/mragsac/BISB-Bootcamp-2020/tree/8fe60da00198de5efc3b23e1c923e13883a1edaf/day4%2Fmodule7_machine-learning-101%2Fhelper%2Fintroduction.py.
+(8) github.com. https://github.com/loutouk/Traffic_accidents/tree/c0f4fc289b16ecbe31dcc9ebc5e37216e0d5bd7e/raw_code.py.

@@ -1,0 +1,90 @@
+The k-nearest neighbors algorithm (k-NN) is a non-parametric supervised learning method. It was first developed by Evelyn Fix and Joseph Hodges in 1951, and later expanded by Thomas Cover¹. It is used for both classification and regression¹.
+
+In both cases, the input consists of the k closest training examples in a data set¹. The output depends on whether k-NN is used for classification or regression¹:
+
+- In k-NN classification, the output is a class membership. An object is classified by a plurality vote of its neighbors, with the object being assigned to the class most common among its k nearest neighbors (k is a positive integer, typically small). If k = 1, then the object is simply assigned to the class of that single nearest neighbor¹.
+- In k-NN regression, the output is the property value for the object. This value is the average of the values of k nearest neighbors. If k = 1, then the output is simply assigned to the value of that single nearest neighbor¹.
+
+The k-NN algorithm is sensitive to the local structure of the data¹. It relies on distance for classification, so if the features represent different physical units or come in vastly different scales, then normalizing the training data can improve its accuracy dramatically¹.
+
+A useful technique can be to assign weights to the contributions of the neighbors, so that the nearer neighbors contribute more to the average than the more distant ones¹. For example, a common weighting scheme consists in giving each neighbor a weight of 1/d, where d is the distance to the neighbor¹.
+
+The neighbors are taken from a set of objects for which the class (for k-NN classification) or the object property value (for k-NN regression) is known¹. This can be thought of as the training set for the algorithm, though no explicit training step is required¹.
+
+Source: Conversation with Bing, 12/21/2023
+(1) k-nearest neighbors algorithm - Wikipedia. https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm.
+(2) K-Nearest Neighbor(KNN) Algorithm - GeeksforGeeks. https://www.geeksforgeeks.org/k-nearest-neighbours/.
+(3) What is the k-nearest neighbors algorithm? | IBM. https://www.ibm.com/topics/knn.
+(4) K-Nearest Neighbor. A complete explanation of K-NN - Medium. https://medium.com/swlh/k-nearest-neighbor-ca2593d7a3c4.
+
+
+************************************			Example
+
+Sure, here is a simple example of how to use the k-Nearest Neighbors (k-NN) algorithm for classification in Python using the `sklearn` library:
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import datasets
+
+# Load iris dataset
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+
+# Split dataset into training set and test set
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Feature scaling
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Create KNN classifier
+knn = KNeighborsClassifier(n_neighbors = 3)
+
+# Fit the classifier to the data
+knn.fit(X_train,y_train)
+
+# Check accuracy
+print(knn.score(X_test, y_test))
+```
+
+In this example, we're using the Iris dataset, which is a multiclass classification problem². The `KNeighborsClassifier` function in `sklearn` is used to build the k-NN model, with `n_neighbors` set to 3¹.
+
+Please note that in a real-world scenario, you'd want to use techniques like cross-validation for more robust model evaluation and hyperparameter tuning¹. You might also want to experiment with different distance metrics or weighting schemes¹.
+
+Remember, it's important to scale your features before using k-NN because it relies on the concept of distance¹. In the above example, we used `StandardScaler` from `sklearn` to standardize our features to have mean=0 and variance=1.
+
+This is a basic example. Depending on your specific use case and dataset, you might need to preprocess your data differently or tune your model's parameters¹.
+
+Source: Conversation with Bing, 12/21/2023
+(1) Develop k-Nearest Neighbors in Python From Scratch. https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/.
+(2) The k-Nearest Neighbors (kNN) Algorithm in Python. https://realpython.com/knn-python/.
+(3) K-Nearest Neighbors (KNN) Python Examples - Analytics Yogi. https://vitalflux.com/k-nearest-neighbors-explained-with-python-examples/.
+(4) K Nearest Neighbors in Python - A Step-by-Step Guide. https://www.nickmccullum.com/python-machine-learning/k-nearest-neighbors-python/.
+
+
+************************************			Evaluation
+
+
+Evaluating the performance of the k-Nearest Neighbors (k-NN) algorithm involves several steps¹²:
+
+1. **Splitting the Data**: The dataset is typically divided into a training set and a test set. The training set is used to train the model, while the test set is used to evaluate the model's performance¹.
+
+2. **Cross-Validation**: One common technique for choosing the optimal value of k is to use cross-validation³. In cross-validation, the data is split into training and testing sets multiple times, and the algorithm’s performance is evaluated for different values of k³. This allows us to choose the value of k that results in the best overall performance on the dataset³.
+
+3. **Performance Metrics**: The choice of performance metrics depends on the problem at hand (classification or regression). For classification problems, common metrics include accuracy, precision, recall, and F1 score¹. For regression problems, common metrics include mean absolute error, mean squared error, and R-squared¹.
+
+4. **Confusion Matrix**: In classification problems, a confusion matrix can be used to visualize the performance of the algorithm. It shows the true positives, true negatives, false positives, and false negatives¹.
+
+5. **ROC Curve**: The Receiver Operating Characteristic (ROC) curve is a plot that illustrates the diagnostic ability of a binary classifier as its discrimination threshold is varied. The Area Under the Curve (AUC) can be used as a summary of the model performance¹.
+
+Remember, no single evaluation method is perfect, and the choice often depends on the specific problem and the business context¹.
+
+Source: Conversation with Bing, 12/21/2023
+(1) What is the k-nearest neighbors algorithm? | IBM. https://www.ibm.com/topics/knn.
+(2) K-Nearest Neighbor(KNN) Algorithm - GeeksforGeeks. https://www.geeksforgeeks.org/k-nearest-neighbours/.
+(3) Deep Dive on KNN: Understanding and Implementing the K-Nearest .... https://arize.com/blog-course/knn-algorithm-k-nearest-neighbor/.
+(4) k-nearest neighbors algorithm - Wikipedia. https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm.

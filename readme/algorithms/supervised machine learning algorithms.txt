@@ -1,0 +1,59 @@
+Supervised learning is a type of machine learning where the algorithm is trained on labeled data. The goal of supervised learning is to learn a mapping function that maps input data to output labels. The algorithm is trained on a labeled dataset, where each example in the dataset consists of an input feature vector and an associated output label.
+
+The most common forms of supervised learning include:
+
+Regression: The goal is to predict a continuous target variable. Examples include predicting housing prices, stock prices, or weather temperature.
+
+Binary Classification: The goal is to predict a binary target variable. Examples include predicting if a customer will buy a product, if a loan applicant will default, or if an email is spam.
+
+Multi-class Classification: The goal is to predict one of multiple classes. Examples include recognizing handwritten digits, predicting the species of a flower, or identifying the type of image in an image classification problem.
+
+Supervised learning algorithms are widely used in various industries to solve real-world problems, such as image classification, speech recognition, natural language processing, and many others. The algorithm's performance is typically evaluated on a test set of examples that were not used for training. The accuracy of the predictions is measured using metrics such as accuracy, precision, recall, F1 score, and others, depending on the specific problem being solved.
+
+
+
+Supervised learning:
+*************************
+	 Supervised learning are algorithms used to train models on labeled data in order to make predictions. Some of the most common supervised learning algorithms are:
+
+Linear Regression: used for predicting continuous target variables.
+
+Logistic Regression: used for binary classification problems.
+
+K-Nearest Neighbors (KNN): used for classification and regression problems.
+
+Decision Trees: used for classification and regression problems.
+
+Random Forest: an ensemble of decision trees used for classification and regression problems.
+
+Support Vector Machines (SVM): used for classification and regression problems.
+
+Naive Bayes: used for classification problems.
+
+Gradient Boosting: an ensemble of decision trees used for classification and regression problems.
+
+Neural Networks: used for a wide range of problems, including image classification, speech recognition, and natural language processing.
+
+These are some of the most commonly used algorithms in supervised learning, and there are many others as well. The choice of algorithm depends on the specific problem being solved, the type of data being used, and the desired level of accuracy. In many cases, a combination of different algorithms is used to build a more robust and accurate model.
+
+Non-Supervised learning:
+*************************
+
+
+Non-Supervised learning algorithms are algorithms used to train models on un-labeled data. The goal is to discover hidden patterns, structures, or relationships in the data, rather than making predictions based on labeled data. Some of the most common non-supervised learning algorithms are:
+
+Clustering: used to group similar data points into clusters. Examples include K-Means, Hierarchical Clustering, and DBSCAN.
+
+Dimensionality Reduction: used to reduce the number of features or dimensions in a dataset, making it easier to visualize and analyze. Examples include PCA, LLE, and t-SNE.
+
+Anomaly Detection: used to identify data points that are significantly different from the majority of the data.
+
+Autoencoders: used for dimensionality reduction and anomaly detection.
+
+Generative Adversarial Networks (GANs): used to generate new data that is similar to a given dataset.
+
+These are some of the most commonly used algorithms in non-supervised learning, and there are many others as well. The choice of algorithm depends on the specific problem being solved and the type of data being used. Non-supervised learning algorithms are widely used in areas such as marketing, finance, and healthcare for tasks such as customer segmentation, fraud detection, and disease diagnosis.
+
+
+Reinforcement learning:
+*************************

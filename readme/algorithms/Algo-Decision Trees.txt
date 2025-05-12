@@ -1,0 +1,78 @@
+
+https://scikit-learn.org/stable/modules/tree.html
+
+https://scikit-learn.org/stable/auto_examples/index.html
+
+
+
+A Decision Tree is a non-parametric supervised learning algorithm that is used for both classification and regression tasks¹²³⁴⁵. It has a hierarchical, tree-like structure, which consists of a root node, branches, internal nodes, and leaf nodes³.
+
+The decision tree starts at the root, like an upside-down tree, and branches off to demonstrate various outcomes¹. The branches then lead to decision (internal) nodes, which ask more questions that lead to more outcomes¹. This goes on until the data reaches what’s called a terminal (or “leaf”) node and ends¹.
+
+Here are some key points about Decision Trees¹²:
+- **Simple to understand and interpret**: Trees can be visualized².
+- **Requires little data preparation**: Other techniques often require data normalization, dummy variables need to be created and blank values to be removed².
+- **Able to handle both numerical and categorical data**: However, the scikit-learn implementation does not support categorical variables for now².
+- **Able to handle multi-output problems**: Uses a white box model².
+- **Possible to validate a model using statistical tests**: That makes it possible to account for the reliability of the model².
+- **Performs well even if its assumptions are somewhat violated by the true model from which the data were generated**².
+
+However, Decision Trees also have some disadvantages²:
+- **Overfitting**: Decision-tree learners can create over-complex trees that do not generalize the data well².
+- **Instability**: Small variations in the data might result in a completely different tree being generated².
+- **Not good at extrapolation**: Predictions of decision trees are neither smooth nor continuous, but piecewise constant approximations².
+- **Optimality**: The problem of learning an optimal decision tree is known to be NP-complete under several aspects of optimality and even for simple concepts².
+
+Despite these disadvantages, Decision Trees are a powerful tool in Machine Learning, providing an effective method for decision-making as they lay out the problem and all the possible outcomes¹. It enables developers to analyze the possible consequences of a decision, and as an algorithm accesses more data, it can predict outcomes for future data¹.
+
+Source: Conversation with Bing, 12/21/2023
+(1) Decision Trees in Machine Learning: Two Types (+ Examples). https://www.coursera.org/articles/decision-tree-machine-learning.
+(2) 1.10. Decision Trees — scikit-learn 1.3.2 documentation. https://scikit-learn.org/stable/modules/tree.html.
+(3) What is a Decision Tree | IBM. https://www.ibm.com/topics/decision-trees.
+(4) Decision Tree in Machine Learning - GeeksforGeeks. https://www.geeksforgeeks.org/decision-tree-introduction-example/.
+(5) Decision Tree - GeeksforGeeks. https://www.geeksforgeeks.org/decision-tree/.
+
+Sure, here is a simple example of how to use the Decision Tree algorithm for classification in Python using the `sklearn` library and the Iris dataset:
+
+```python
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import metrics
+
+# Load iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Split dataset into training set and test set
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+
+# Create Decision Tree classifer object
+clf = DecisionTreeClassifier()
+
+# Train Decision Tree Classifer
+clf = clf.fit(X_train,y_train)
+
+# Predict the response for test dataset
+y_pred = clf.predict(X_test)
+
+# Model Accuracy
+print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
+```
+
+In this example, we're using the Iris dataset, which is a multiclass classification problem⁵. The `DecisionTreeClassifier` function in `sklearn` is used to build the Decision Tree model⁴.
+
+Please note that in a real-world scenario, you'd want to use techniques like cross-validation for more robust model evaluation and hyperparameter tuning². You might also want to experiment with different tree depths or other parameters².
+
+Remember, it's important to evaluate your model using appropriate metrics. In the above example, we used accuracy as our evaluation metric⁴. Depending on your specific use case and dataset, you might need to preprocess your data differently or tune your model's parameters²..
+
+Source: Conversation with Bing, 12/21/2023
+(1) Iris Data Prediction using Decision Tree Algorithm - Medium. https://medium.com/analytics-vidhya/iris-data-prediction-using-decision-tree-algorithm-7948fb68201b.
+(2) 1.10. Decision Trees — scikit-learn 1.3.2 documentation. https://scikit-learn.org/stable/modules/tree.html.
+(3) Decision Tree - GeeksforGeeks. https://www.geeksforgeeks.org/decision-tree/.
+(4) Decision Trees in Machine Learning: Two Types (+ Examples). https://www.coursera.org/articles/decision-tree-machine-learning.
+(5) Decision Tree in Machine Learning - GeeksforGeeks. https://www.geeksforgeeks.org/decision-tree-introduction-example/.
+(6) github.com. https://github.com/fcritcompminiproject/batch2020/tree/2ad7bb1482fb90421ff3ab46c94cf54b20e84b4d/group%2022%2Fprediction%2Fdectree.py.
+(7) en.wikipedia.org. https://en.wikipedia.org/wiki/Decision_tree.
+
